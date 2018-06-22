@@ -28,6 +28,9 @@ defmodule YNABLoader.Category do
   def activity?(%__MODULE__{activity: 0}), do: false
   def activity?(_), do: true
 
+  def empty?(%{balance: 0}), do: true
+  def empty?(_), do: false
+
   defp normalize_currency(int) do
     div(int, 10)
   end

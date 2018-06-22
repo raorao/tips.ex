@@ -12,6 +12,8 @@ defmodule YNABLoader do
     |> Enum.flat_map(&parse_category/1)
     |> Enum.filter(&YNABLoader.Category.balanced?/1)
     |> Enum.filter(&YNABLoader.Category.activity?/1)
+    |> Enum.reject(&YNABLoader.Category.empty?/1)
+
   end
 
   defp parse_category(%{"name" => group, "categories" => categories}) do
